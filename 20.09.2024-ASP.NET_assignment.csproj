@@ -7,4 +7,8 @@
     <RootNamespace>_20._09._2024_ASP.NET_assignment</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+  </ItemGroup>
+
 </Project>

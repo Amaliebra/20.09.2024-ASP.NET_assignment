@@ -1,15 +1,38 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.UseHttpsRedirection();
+
+app.Urls.Add("http://localhost:5273/");
+// app.Urls.Add("http://localhost:3000/images/pic.jpg");
+
 app.MapGet("/", () => "Hello World!");
 
-app.Run();
+app.MapGet("/health", () => "Server ok");
 
-var app = WebApplication.Create(args);
+app.MapPost("/index.html", () =>
+{
+    return "recived!";
+});
 
-app.Urls.Add("http://localhost:3000");
-app.Urls.Add("http://127.0.0.1:5500/");
+// if (!app.Environment.IsDevelopment())
+// {
+//     app.UseExceptionHandler("/Error");
+//     app.UseHsts();
+// }
 
-app.MapGet("/", () => "Hello World");
+// app.UseHttpsRedirection();
+
+// app.UseAuthentication();
+// app.UseAuthorization();
+
+// app.UseStaticFiles(new StaticFileOptions
+// {
+//     FileProvider = new PhysicalFileProvider(
+//            Path.Combine(builder.Environment.ContentRootPath, "MyStaticFiles")),
+//     RequestPath = "/StaticFiles"
+// });
 
 app.Run();
